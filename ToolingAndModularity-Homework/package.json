@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "jacobator",
+  "author": "vplusk",
   "license": "MIT",
   "devDependencies": {
     "almond": "^0.3.2",
