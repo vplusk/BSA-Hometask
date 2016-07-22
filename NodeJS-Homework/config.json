@@ -1,0 +1,9 @@
+{
+    "apiPrefix": "http://localhost:8888",
+    "serverPort": "8888",
+    "db":{
+        "name": "chat",
+        "host": "localhost",
+        "port": 27017
+    }
+}

@@ -39,20 +39,25 @@
 			};
 
 			text.val('');
+			// Sending chat message to database
 			socket.emit('chat message', data);
 			
 		});
 
+		// receiving chat history from database
 		socket.on('chat history', function(msg) {
+			//console.log(msg.message);
 			for (var i in msg) {
 				if(msg.hasOwnProperty(i)) {
-					messages.append($('<li>').text(msg[i].name + ': ' + msg[i].text));
+					// displaying data in form of ul-list
+					messages.append($('<li>').text(msg[i].name + ': ' + msg[i].message));
 				}
 			}
 		});
 
+		// Updating chat history in real-time
 		socket.on('chat message', function(msg) {
-			messages.append($('<li>').text(msg.name + ': ' + msg.text));
+			messages.append($('<li>').text(msg.name + ': ' + msg.message));
 		});
 
 	})();
