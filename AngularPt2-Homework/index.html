@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html ng-app="footballApp">
+	<head>
+		<title>Angular directive</title>
+		<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+	</head>
+	<body ng-cloak>
+		<div class="container">
+			<div class="row">
+				<footballers-data></footballers-data>
+			</div>
+		</div>
+		<script src="/bower_components/angular/angular.js"></script>
+		<script src="/bower_components/angular-route/angular-route.js"></script>
+		<script>
+		var module = angular.module('footballApp', ['ngRoute']);
+		module.factory('footballersFactory', footballersFactory);
+		footballersFactory.$inject = [
+			'$http', '$q'
+		]
+		
+		function footballersFactory($http, $q) {
+			return {
+				ajaxItems: function() {
+					var deferred = $q.defer();
+					$http({ 
+						method: "GET", 
+						url: "/footballers" 
+					}).success(function (data, status, headers, config) {
+						deferred.resolve(data);
+					}).error(function (data, status, headers, config) {
+						deferred.reject(status);
+					});
+					return deferred.promise;
+				},
+
+				deleteFootballer: function(id) {					
+					return $http.delete('/footballers/' + id)
+						.success(function (data, status, headers, config) {
+							console.log("footballer has been deleted");
+						})
+				},
+
+				editFootballer: function(id, data) {
+					return $http.put('footballers/' + id, data)
+						.success(function (data, status, headers, config) {
+							console.log("footballer has been deleted");
+						})
+				}
+			}
+		}
+
+		module.directive('footballersData', footballersData);
+		footballersData.$inject = [
+			'footballersFactory'
+		];
+
+		function footballersData(footballersFactory) {
+			return {
+				restrict: 'E',
+				templateUrl: './frontend/templates/footballersData.html',
+				link: footballersFunction
+			}
+
+			function footballersFunction(scope) {
+				var vm = this;
+
+				footballersFactory.ajaxItems()
+					.then(function(data) {
+						scope.footballers = data;
+						console.log(scope.footballers);
+					});
+
+				scope.deleteFootballer = function(id) {
+					footballersFactory.deleteFootballer(id);
+					scope.footballers.splice(id, 1);
+				}
+
+				scope.editFootballer = function(id, data) {
+					footballersFactory.editFootballer();					
+				} 
+			}
+		}
+
+		</script>
+		<!--
+		<script src="/frontend/services/footballersFactory.js"></script>
+		<script src="/frontend/directives/footballersDirective.js"></script>  -->
+		<script src="/frontend/routes.js"></script>
+		
+		
+		<script src="/frontend/controllers/FootballController.js"></script>
+	</body>
+</html>
+
+
+
