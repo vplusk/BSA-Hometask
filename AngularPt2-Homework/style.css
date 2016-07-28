@@ -1,0 +1,124 @@
+.green {
+	background-color: green;
+}
+
+.red {
+	background-color: red;
+}
+
+.header {
+	border: 2px dashed gray;
+	text-align: center;
+	text-decoration: underline;
+}
+
+#main-content {
+	width: 80%;
+	margin: 1% 10%;
+	background-color: #F7F7F7;
+	border-radius:  10px;
+	padding: 20px;
+}
+
+#main-content div {
+	margin: 10px 0;
+}
+
+.if-example {
+	border: 2px dashed #0027FF;
+	text-align: center;
+}
+
+.click-events {
+	border: 2px dashed red;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	display: flex;
+	flex-flow: column wrap;
+}
+
+.click-events div {
+	flex: 1;
+	width: 100%;
+	align-items: center;
+}
+
+.btn-size-fixed {
+	width: 200px !important;
+}
+
+.title {
+	text-decoration: underline;
+}
+
+.row {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.row form, div {
+	flex: 1;
+	text-align: center;
+}
+
+.change {
+	border: 2px dashed green;
+}
+
+.blur-example {
+	border: 2px dashed orange;
+}
+
+.repeat-example {
+	border: 2px dashed brown;
+}
+
+.disabled-example {
+	border: 2px dashed black;
+}
+
+.checked-exmaple {
+	border: 2px dashed yellow;
+}
+
+.href-example {
+	border: 2px dashed purple;
+}
+
+.form-error {
+	color: red;
+	font-size: 12px;
+	font-family: Arial;
+}
+
+.validation-wrapper form .row{
+	align-items: center;
+	justify-content: center;
+}
+
+.validation-wrapper form .row label{
+	flex-basis: 75px;
+}
+
+.validation-wrapper form .row div{
+	flex: 1;
+	text-align: none;
+}
+
+.validation-item {
+	display: flex;
+	flex-direction: column;
+}
+
+.validation-item input{
+	flex: 1;
+}
+
+.validation-item div {
+	flex: 1;
+}
+
+.filters-example {
+	border: 2px dashed #00C47F;
+}
